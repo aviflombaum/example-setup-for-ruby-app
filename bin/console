@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+# A console is giving you command line access to the exact 
+# same environment that your program runs in.
+require_relative '../config/environment'
+
+Pry.start
