@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 gem 'rspec'
+gem 'simplecov'
+
 gem 'nokogiri'
 gem 'json'
 gem 'activerecord'
