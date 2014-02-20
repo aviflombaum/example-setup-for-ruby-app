@@ -1,5 +1,30 @@
 #!/usr/bin/env ruby
+require 'erb'
 
 require_relative '../config/environment'
 
-puts "Generated the site!!!"
+@students = (1..10).collect do 
+  Student.new
+end
+
+student_html = File.read('lib/templates/student.html.erb')
+student_template = ERB.new(student_html)
+
+@students.each do |student| 
+  @student = student
+  html = student_template.result(binding)
+
+  File.write(
+    "_site/student_#{student.name}.html", 
+   html 
+  )
+end
+
+index_html = File.read('lib/templates/index.html.erb')
+index_template = ERB.new(index_html)
+
+File.write(
+  "_site/index.html", 
+ index_template.result(binding) 
+)
+
